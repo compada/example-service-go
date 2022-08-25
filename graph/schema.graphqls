@@ -1,0 +1,19 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Person {
+  id: ID!
+  name: String
+  email: String
+}
+
+"""
+Grab some data!
+"""
+type Query {
+  """
+  Fetch a paginated list of people.
+  """
+  persons: [Person!]!
+}
