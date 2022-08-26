@@ -33,7 +33,7 @@ docker compose run --rm gen
 
 ## Deployment
 
-This should be done for you via CI/CD. See compada/cd.
+This should be done for you via CI/CD. See <https://github.com/compada/cd>.
 
 ## Reading
 
