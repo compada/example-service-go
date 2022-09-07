@@ -13,6 +13,7 @@ services:
       - ${LOCAL_DEP_PATH:-..}:/local
 
   app:
+    tty: true
     <<: *go
     command: run ./cmd/graph/main.go
     ports:
