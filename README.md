@@ -1,6 +1,10 @@
 # Compada Person Service
 
-Federated graphQL sub-graph concerning persons.
+Federated graphQL sub-graph concerning persons, along with the various information intrinsically related to them.
+
+- contacts
+- experiences
+- skills
 
 ## Getting Started
 
@@ -18,6 +22,47 @@ query fetchPeople {
   persons {
     id
     name
+  }
+}
+
+query fetchExperiences {
+  experiences {
+    id
+    company_id
+    title
+    duration
+  }
+}
+
+query fetchSkills {
+  skills {
+    id
+    name
+  }
+}
+
+query fetchUser {
+  userByID(id: 1) {
+    id
+    name
+    contacts {
+      primary
+      emails
+      phones
+    }
+    experiences {
+      id
+      title
+      duration
+      company {
+        id
+        name
+      }
+    }
+    skills {
+      id
+      name
+    }
   }
 }
 ```
