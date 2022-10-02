@@ -30,3 +30,4 @@ coverage
 # Ignore env
 /.env
 .env.local
+compose.override.yml
