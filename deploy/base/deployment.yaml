@@ -3,6 +3,8 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: person-service
+  annotations:
+    fluxcd.io/automated: "true"
 spec:
   selector:
     matchLabels:
@@ -20,7 +22,7 @@ spec:
         - name: registry-auth
       containers:
         - name: person-service
-          image: ghcr.io/compada/person-service:sha-22c9030
+          image: ghcr.io/compada/person-service:sha-a5eeb4b
           imagePullPolicy: IfNotPresent
           ports:
             - name: web
