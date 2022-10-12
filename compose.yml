@@ -5,6 +5,7 @@ services:
     stdin_open: true
     build:
       context: .
+      target: build
     entrypoint: go
     command: help
     volumes:
