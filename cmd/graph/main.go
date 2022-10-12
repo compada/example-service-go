@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
@@ -20,13 +21,16 @@ func main() {
 	router := chi.NewRouter()
 	server_port := os.Getenv("PORT")
 
-	// Add CORS middleware around every request
-	// See https://github.com/rs/cors for full option listing
-	router.Use(cors.New(cors.Options{
-		AllowedOrigins:   []string{"*"},
-		AllowCredentials: true,
-		Debug:            true,
-	}).Handler)
+
+	if cors_origins, present := os.LookupEnv("CORS_ORIGINS"); present {
+		// Add CORS middleware around every request
+		// See https://github.com/rs/cors for full option listing
+		router.Use(cors.New(cors.Options{
+			AllowedOrigins:   strings.Fields(cors_origins),
+			AllowCredentials: true,
+			Debug:            true,
+		}).Handler)
+	}
 
 	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
 	srv.AddTransport(&transport.Websocket{
