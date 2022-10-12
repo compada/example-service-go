@@ -6,5 +6,6 @@ resources:
   - ../../base
 configMapGenerator:
   - name: person-service-config
+    behavior: merge
     envs:
       - .env
