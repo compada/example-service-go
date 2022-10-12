@@ -16,8 +16,7 @@ WORKDIR /usr/src/app
 
 COPY --from=build /service ./service
 
-ENV PORT=8080
-EXPOSE $PORT
+EXPOSE 8080
 
 USER nonroot:nonroot
 
