@@ -21,9 +21,10 @@ spec:
       containers:
         - name: person-service
           image: ghcr.io/compada/person-service:sha-22c9030
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080
+            - name: web
+              containerPort: 8080
           envFrom:
             - configMapRef:
                 name: person-service-config
