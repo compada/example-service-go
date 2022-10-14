@@ -22,7 +22,7 @@ spec:
         - name: registry-auth
       containers:
         - name: person-service
-          image: ghcr.io/compada/person-service:sha-a5eeb4b
+          image: ghcr.io/compada/person-service:main-2b84417-1665723566
           imagePullPolicy: IfNotPresent
           ports:
             - name: web
