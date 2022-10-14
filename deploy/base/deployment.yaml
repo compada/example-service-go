@@ -19,7 +19,7 @@ spec:
         - name: registry-auth
       containers:
         - name: person-service
-          image: ghcr.io/compada/person-service:main-9d57976-1665726981 # {"$imagepolicy": "flux-system:person-service"}
+          image: ghcr.io/compada/person-service:main-0bd4fdf-1665729900 # {"$imagepolicy": "flux-system:person-service"}
           imagePullPolicy: IfNotPresent
           ports:
             - name: web
