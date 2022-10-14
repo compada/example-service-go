@@ -17,7 +17,7 @@ services:
     <<: *go
     command: run ./cmd/graph/main.go
     ports:
-      - ${PORT}:8080
+      - ${PORT}:${PORT}
 
   gen:
     <<: *go

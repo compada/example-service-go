@@ -10,9 +10,7 @@ import (
 	"strings"
 
 	"github.com/99designs/gqlgen/graphql/handler"
-	"github.com/99designs/gqlgen/graphql/handler/transport"
 	"github.com/go-chi/chi"
-	"github.com/gorilla/websocket"
 	"github.com/rs/cors"
 )
 
@@ -33,16 +31,6 @@ func main() {
 	}
 
 	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
-	srv.AddTransport(&transport.Websocket{
-		Upgrader: websocket.Upgrader{
-			CheckOrigin: func(r *http.Request) bool {
-				// Check against your desired domains here
-				return r.Host == "example.org"
-			},
-			ReadBufferSize:  1024,
-			WriteBufferSize: 1024,
-		},
-	})
 	router.Handle("/query", srv)
 
 	log.Println("listening on port", server_port)
