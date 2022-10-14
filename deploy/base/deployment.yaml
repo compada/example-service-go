@@ -3,8 +3,6 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: person-service
-  annotations:
-    fluxcd.io/automated: "true"
 spec:
   selector:
     matchLabels:
