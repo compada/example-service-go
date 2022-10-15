@@ -35,3 +35,12 @@ spec:
             limits:
               cpu: 100m
               memory: 400M
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: web
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: web
+            initialDelaySeconds: 60

@@ -11,6 +11,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"github.com/rs/cors"
 )
 
@@ -29,6 +30,8 @@ func main() {
 			Debug:            true,
 		}).Handler)
 	}
+
+	router.Use(middleware.Heartbeat("/healthz"))
 
 	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
 	router.Handle("/query", srv)
