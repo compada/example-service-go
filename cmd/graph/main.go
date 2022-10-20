@@ -20,7 +20,6 @@ func main() {
 	router := chi.NewRouter()
 	server_port := os.Getenv("PORT")
 
-
 	if cors_origins, present := os.LookupEnv("CORS_ORIGINS"); present {
 		// Add CORS middleware around every request
 		// See https://github.com/rs/cors for full option listing
